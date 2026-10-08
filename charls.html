@@ -33,89 +33,89 @@
   <div class="w-full max-w-md min-h-screen sm:min-h-0 bg-white sm:rounded-2xl border-0 sm:border border-gray-200/80 shadow-sm flex flex-col overflow-hidden">
     
     <!-- Top Utility Bar -->
-    <div class="px-6 pt-6 pb-2 flex justify-between items-center">
-      <div class="inline-flex items-center gap-2 text-xs font-medium text-gray-500">
-        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+    <div class="px-6 pt-6 pb-3 flex justify-between items-center">
+      <div class="inline-flex items-center gap-2 text-sm font-medium text-gray-600">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
         Available for consultations
       </div>
 
       <div class="flex items-center gap-2">
-        <button onclick="openQrModal()" title="Show QR Code" class="p-2 rounded-lg text-gray-600 hover:text-black hover:bg-gray-100 action-btn">
-          <i data-lucide="qr-code" class="w-4 h-4"></i>
+        <button onclick="openQrModal()" title="Show QR Code" class="p-2.5 rounded-xl text-gray-700 hover:text-black hover:bg-gray-100 action-btn">
+          <i data-lucide="qr-code" class="w-5 h-5"></i>
         </button>
-        <button onclick="shareCard()" title="Share Card" class="p-2 rounded-lg text-gray-600 hover:text-black hover:bg-gray-100 action-btn">
-          <i data-lucide="share-2" class="w-4 h-4"></i>
+        <button onclick="shareCard()" title="Share Card" class="p-2.5 rounded-xl text-gray-700 hover:text-black hover:bg-gray-100 action-btn">
+          <i data-lucide="share-2" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
 
     <!-- Profile Info -->
-    <div class="px-6 pt-4 pb-6 border-b border-gray-100">
+    <div class="px-6 pt-4 pb-7 border-b border-gray-100">
       
       <!-- Avatar & Name (Horizontal Left-Aligned) -->
       <div class="flex items-center gap-4 mb-4">
         <!-- Monogram Avatar -->
-        <div class="w-16 h-16 rounded-full bg-gray-900 text-white flex items-center justify-center font-semibold text-lg tracking-wider shrink-0 shadow-inner">
+        <div class="w-18 h-18 p-4 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold text-xl tracking-wider shrink-0 shadow-inner">
           CA
         </div>
 
         <div>
-          <h1 class="text-xl font-bold tracking-tight text-gray-900 leading-snug">Charls Andrada</h1>
-          <p class="text-sm font-medium text-gray-600">Entrepreneur &bull; TapAndGo</p>
-          <p class="text-xs text-gray-400 mt-0.5">Digital Solutions & NFC Systems</p>
+          <h1 class="text-2xl font-bold tracking-tight text-gray-900 leading-snug">Charls Andrada</h1>
+          <p class="text-base font-semibold text-gray-700 mt-0.5">Entrepreneur &bull; TapAndGo</p>
+          <p class="text-sm text-gray-500 mt-0.5 font-normal">Digital Solutions & NFC Systems</p>
           
           <!-- Business Partner Link Badge (Links back to Kyle) -->
-          <div class="mt-1.5 flex items-center">
-            <a id="linkPartner" href="/" title="View Kyle Santos's card" class="inline-flex items-center gap-1.5 text-[11px] font-medium text-gray-500 hover:text-black py-0.5 px-2 rounded-full border border-gray-200 bg-gray-50/90 hover:bg-gray-100 transition-colors action-btn">
+          <div class="mt-2 flex items-center">
+            <a id="linkPartner" href="/" title="View Kyle Santos's card" class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-600 hover:text-black py-1 px-3 rounded-full border border-gray-200 bg-gray-50/90 hover:bg-gray-100 transition-colors action-btn">
               <span>Business partner:</span>
               <span class="text-gray-900 font-semibold underline decoration-gray-300 underline-offset-2">Kyle Santos</span>
-              <i data-lucide="arrow-up-right" class="w-3 h-3 text-gray-400"></i>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-gray-400"></i>
             </a>
           </div>
         </div>
       </div>
 
       <!-- General Business Value Prop -->
-      <p class="text-xs text-gray-600 leading-relaxed">
+      <p class="text-sm text-gray-600 leading-relaxed pt-1">
         Helping businesses establish a modern digital presence, strengthen online reputation, and streamline customer interactions through targeted digital marketing, high-performance websites, and smart NFC touchpoints.
       </p>
 
       <!-- Primary Action: Save to Contacts -->
-      <div class="mt-5">
-        <button onclick="downloadVCard()" class="w-full py-3 px-4 rounded-xl bg-gray-900 hover:bg-black text-white font-medium text-sm flex items-center justify-center gap-2 action-btn shadow-sm">
-          <i data-lucide="user-plus" class="w-4 h-4 stroke-[2]"></i>
+      <div class="mt-6">
+        <button onclick="downloadVCard()" class="w-full py-3.5 px-4 rounded-xl bg-gray-900 hover:bg-black text-white font-semibold text-base flex items-center justify-center gap-2.5 action-btn shadow-sm">
+          <i data-lucide="user-plus" class="w-5 h-5 stroke-[2]"></i>
           Save Contact (.vcf)
         </button>
       </div>
 
       <!-- Quick Communication Buttons -->
-      <div class="grid grid-cols-4 gap-2 mt-2.5">
-        <a id="linkCall" href="tel:+639693127564" class="flex flex-col items-center justify-center py-2.5 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
-          <i data-lucide="phone" class="w-4 h-4 text-gray-800 mb-1"></i>
-          <span class="text-[11px] font-medium">Call</span>
+      <div class="grid grid-cols-4 gap-2.5 mt-3">
+        <a id="linkCall" href="tel:+639693127564" class="flex flex-col items-center justify-center py-3 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
+          <i data-lucide="phone" class="w-5 h-5 text-gray-800 mb-1"></i>
+          <span class="text-xs font-semibold">Call</span>
         </a>
 
-        <a id="linkSms" href="sms:+639693127564" class="flex flex-col items-center justify-center py-2.5 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
-          <i data-lucide="message-square" class="w-4 h-4 text-gray-800 mb-1"></i>
-          <span class="text-[11px] font-medium">SMS</span>
+        <a id="linkSms" href="sms:+639693127564" class="flex flex-col items-center justify-center py-3 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
+          <i data-lucide="message-square" class="w-5 h-5 text-gray-800 mb-1"></i>
+          <span class="text-xs font-semibold">SMS</span>
         </a>
 
-        <a id="linkEmail" href="mailto:andradachrlsmrn@gmail.com" class="flex flex-col items-center justify-center py-2.5 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
-          <i data-lucide="mail" class="w-4 h-4 text-gray-800 mb-1"></i>
-          <span class="text-[11px] font-medium">Email</span>
+        <a id="linkEmail" href="mailto:andradachrlsmrn@gmail.com" class="flex flex-col items-center justify-center py-3 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
+          <i data-lucide="mail" class="w-5 h-5 text-gray-800 mb-1"></i>
+          <span class="text-xs font-semibold">Email</span>
         </a>
 
-        <a id="linkViber" href="viber://chat?number=%2B639693127564" class="flex flex-col items-center justify-center py-2.5 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
-          <i data-lucide="message-circle" class="w-4 h-4 text-gray-800 mb-1"></i>
-          <span class="text-[11px] font-medium">Viber</span>
+        <a id="linkViber" href="viber://chat?number=%2B639693127564" class="flex flex-col items-center justify-center py-3 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-700 action-btn">
+          <i data-lucide="message-circle" class="w-5 h-5 text-gray-800 mb-1"></i>
+          <span class="text-xs font-semibold">Viber</span>
         </a>
       </div>
 
       <!-- LinkedIn Direct Button Below Quick Contacts (Centered) -->
-      <div class="mt-2.5 flex justify-center w-full">
-        <a id="linkLinkedInTop" href="https://ph.linkedin.com/in/charls-marion-a-andrada-2ba6b3428" target="_blank" class="w-full py-2.5 px-4 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-800 text-xs font-medium inline-flex items-center justify-center gap-2 text-center action-btn">
-          <i data-lucide="linkedin" class="w-4 h-4 text-[#0a66c2] shrink-0"></i>
-          <span class="leading-none">Connect on LinkedIn</span>
+      <div class="mt-3 flex justify-center w-full">
+        <a id="linkLinkedInTop" href="https://ph.linkedin.com/in/charls-marion-a-andrada-2ba6b3428" target="_blank" class="w-full py-3 px-4 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 text-gray-900 text-sm font-semibold inline-flex items-center justify-center gap-2 text-center action-btn">
+          <i data-lucide="linkedin" class="w-4.5 h-4.5 text-[#0a66c2] shrink-0"></i>
+          <span>Connect on LinkedIn</span>
         </a>
       </div>
 
@@ -123,50 +123,50 @@
 
     <!-- What We Provide -->
     <div class="p-6 border-b border-gray-100">
-      <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">What We Provide</h2>
-      <div class="space-y-2.5">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3.5">What We Provide</h2>
+      <div class="space-y-3">
         
         <!-- 1. Digital Marketing Services -->
-        <div class="flex items-start gap-3 p-3.5 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
-          <div class="w-8 h-8 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
-            <i data-lucide="trending-up" class="w-4 h-4"></i>
+        <div class="flex items-start gap-3.5 p-4 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
+          <div class="w-9 h-9 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="trending-up" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="text-xs font-semibold text-gray-900">Digital Marketing Services</h3>
-            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Strategic social media presence, customer outreach, and tailored local marketing campaigns to bring in real foot traffic and online inquiries.</p>
+            <h3 class="text-sm font-bold text-gray-900">Digital Marketing Services</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mt-1">Strategic social media presence, customer outreach, and tailored local marketing campaigns to bring in real foot traffic and online inquiries.</p>
           </div>
         </div>
 
         <!-- 2. Professional Website -->
-        <div class="flex items-start gap-3 p-3.5 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
-          <div class="w-8 h-8 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
-            <i data-lucide="layout" class="w-4 h-4"></i>
+        <div class="flex items-start gap-3.5 p-4 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
+          <div class="w-9 h-9 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="layout" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="text-xs font-semibold text-gray-900">Professional Websites</h3>
-            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Fast-loading, mobile-optimized websites and digital hubs showcasing your brand, products, operating hours, and location with direct contact channels.</p>
+            <h3 class="text-sm font-bold text-gray-900">Professional Websites</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mt-1">Fast-loading, mobile-optimized websites and digital hubs showcasing your brand, products, operating hours, and location with direct contact channels.</p>
           </div>
         </div>
 
         <!-- 3. Google Review Boost -->
-        <div class="flex items-start gap-3 p-3.5 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
-          <div class="w-8 h-8 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
-            <i data-lucide="star" class="w-4 h-4"></i>
+        <div class="flex items-start gap-3.5 p-4 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
+          <div class="w-9 h-9 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="star" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="text-xs font-semibold text-gray-900">Google Review Boost</h3>
-            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Frictionless 1-tap review triggers that prompt satisfied customers directly to your Google Business profile, elevating search ranking and local trust.</p>
+            <h3 class="text-sm font-bold text-gray-900">Google Review Boost</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mt-1">Frictionless 1-tap review triggers that prompt satisfied customers directly to your Google Business profile, elevating search ranking and local trust.</p>
           </div>
         </div>
 
         <!-- 4. Custom NFC Cards & Digital Business Cards -->
-        <div class="flex items-start gap-3 p-3.5 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
-          <div class="w-8 h-8 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
-            <i data-lucide="contact" class="w-4 h-4"></i>
+        <div class="flex items-start gap-3.5 p-4 rounded-xl border border-gray-100 bg-white hover:border-gray-200 transition-colors">
+          <div class="w-9 h-9 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="contact" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="text-xs font-semibold text-gray-900">Custom NFC Cards & Digital Business Cards</h3>
-            <p class="text-[11px] text-gray-500 leading-snug mt-0.5">Branded physical tap cards and counter stands paired with contactless digital cards—share your profile, portfolio, and contact details in one tap.</p>
+            <h3 class="text-sm font-bold text-gray-900">Custom NFC Cards & Digital Business Cards</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mt-1">Branded physical tap cards and counter stands paired with contactless digital cards—share your profile, portfolio, and contact details in one tap.</p>
           </div>
         </div>
 
@@ -174,39 +174,39 @@
     </div>
 
     <!-- Connect & Inquiries -->
-    <div class="p-6 space-y-2">
-      <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">Connect With Me</h2>
+    <div class="p-6 space-y-2.5">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3.5">Connect With Me</h2>
 
       <!-- Facebook -->
-      <a id="linkFacebook" href="https://www.facebook.com/share/19fgsxvCPZ/?mibextid=wwXIfr" target="_blank" class="flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:bg-gray-50 text-gray-800 text-xs action-btn">
+      <a id="linkFacebook" href="https://www.facebook.com/share/19fgsxvCPZ/?mibextid=wwXIfr" target="_blank" class="flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 text-gray-900 text-sm action-btn">
         <div class="flex items-center gap-3">
-          <i data-lucide="facebook" class="w-4 h-4 text-blue-600"></i>
-          <span class="font-medium">Facebook Profile</span>
+          <i data-lucide="facebook" class="w-5 h-5 text-blue-600"></i>
+          <span class="font-semibold">Facebook Profile</span>
         </div>
-        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
       </a>
 
       <!-- LinkedIn -->
-      <a id="linkLinkedIn" href="https://ph.linkedin.com/in/charls-marion-a-andrada-2ba6b3428" target="_blank" class="flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:bg-gray-50 text-gray-800 text-xs action-btn">
+      <a id="linkLinkedIn" href="https://ph.linkedin.com/in/charls-marion-a-andrada-2ba6b3428" target="_blank" class="flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 text-gray-900 text-sm action-btn">
         <div class="flex items-center gap-3">
-          <i data-lucide="linkedin" class="w-4 h-4 text-[#0a66c2]"></i>
-          <span class="font-medium">LinkedIn Profile</span>
+          <i data-lucide="linkedin" class="w-5 h-5 text-[#0a66c2]"></i>
+          <span class="font-semibold">LinkedIn Profile</span>
         </div>
-        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
       </a>
 
       <!-- Instagram -->
-      <a id="linkInstagram" href="https://www.instagram.com/chrlssard?stkn=bnJwcms1cDB6ZnF5&utm_source=qr" target="_blank" class="flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:bg-gray-50 text-gray-800 text-xs action-btn">
+      <a id="linkInstagram" href="https://www.instagram.com/chrlssard?stkn=bnJwcms1cDB6ZnF5&utm_source=qr" target="_blank" class="flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:bg-gray-50 text-gray-900 text-sm action-btn">
         <div class="flex items-center gap-3">
-          <i data-lucide="instagram" class="w-4 h-4 text-pink-600"></i>
-          <span class="font-medium">Instagram (@chrlssard)</span>
+          <i data-lucide="instagram" class="w-5 h-5 text-pink-600"></i>
+          <span class="font-semibold">Instagram (@chrlssard)</span>
         </div>
-        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
       </a>
     </div>
 
     <!-- Simple Minimal Footer -->
-    <div class="px-6 py-6 border-t border-gray-100 text-center text-gray-400 text-xs">
+    <div class="px-6 py-6 border-t border-gray-100 text-center text-gray-500 text-xs font-medium">
       <p>TapAndGo &bull; Digital Solutions Provider</p>
     </div>
 
