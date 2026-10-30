@@ -317,6 +317,23 @@
       </div>
 
       <div class="space-y-2.5">
+        <!-- Appearo Business Platform -->
+        <a id="linkAppearo" href="https://www.appearoph.online/" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl clean-card text-xs text-dark group border border-emerald-500/20 bg-gradient-to-r from-emerald-50/40 via-white to-white">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-dark text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+              <i data-lucide="globe" class="w-5 h-5 text-emerald-400 stroke-[2.2]"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-dark group-hover:underline">Appearo</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 tracking-wide uppercase">Our Platform</span>
+              </div>
+              <span class="text-[11px] text-slate-500">Official business platform &bull; appearoph.online</span>
+            </div>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-emerald-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+        </a>
+
         <!-- Facebook -->
         <a id="linkFacebook" href="https://www.facebook.com/share/19fgsxvCPZ/?mibextid=wwXIfr" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl clean-card text-xs text-dark group">
           <div class="flex items-center gap-3">
@@ -482,6 +499,13 @@
             <i data-lucide="share-2" class="w-4 h-4 text-slate-600"></i>
             <span>Connect Channels</span>
           </a>
+          <a href="https://www.appearoph.online/" target="_blank" class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors group">
+            <div class="flex items-center gap-3">
+              <i data-lucide="globe" class="w-4 h-4 text-emerald-600"></i>
+              <span>Appearo Platform</span>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400 group-hover:text-dark"></i>
+          </a>
         </nav>
       </div>
 
@@ -526,6 +550,7 @@
       cleanPhone: "+639693127564",
       email: "andradachrlsmrn@gmail.com",
       website: window.location.origin + "/charls",
+      platform: "https://www.appearoph.online/",
       linkedin: "https://ph.linkedin.com/in/charls-marion-a-andrada-2ba6b3428",
       facebook: "https://www.facebook.com/share/19fgsxvCPZ/?mibextid=wwXIfr",
       instagram: "https://www.instagram.com/chrlssard?stkn=bnJwcms1cDB6ZnF5&utm_source=qr",
@@ -544,6 +569,7 @@
         `TEL;TYPE=CELL,VOICE:${profile.cleanPhone}`,
         `EMAIL;TYPE=WORK,INTERNET:${profile.email}`,
         `URL:${profile.website}`,
+        `URL;type=Platform:${profile.platform}`,
         `URL;type=LinkedIn:${profile.linkedin}`,
         `NOTE:${profile.note}`,
         "END:VCARD"
