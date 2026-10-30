@@ -44,6 +44,14 @@
   </script>
 
   <style>
+    :root {
+      /* Emil Kowalski's Precision Easing Curves */
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+      --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+      --ease-hover: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
     body {
       background-color: #F5F3EF;
       color: #14161B;
@@ -51,44 +59,126 @@
       -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
       overflow-x: hidden;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
+    /* Tactile Card with Ambient + Key Layered Shadows */
     .clean-card {
       background: #FFFFFF;
       border: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 4px 18px -2px rgba(20, 22, 27, 0.04), 0 2px 6px -1px rgba(20, 22, 27, 0.02);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 2px rgba(20, 22, 27, 0.03), 0 4px 16px -2px rgba(20, 22, 27, 0.05);
+      transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 150ms ease;
+      will-change: transform;
     }
     .clean-card:hover {
-      box-shadow: 0 8px 24px -4px rgba(20, 22, 27, 0.08);
+      box-shadow: 0 2px 6px rgba(20, 22, 27, 0.04), 0 10px 24px -4px rgba(20, 22, 27, 0.08);
       transform: translateY(-1.5px);
     }
     .clean-card:active {
       transform: scale(0.98);
+      transition-duration: 90ms;
     }
 
+    /* Dark Action Pill with Responsive Active State */
     .btn-dark-pill {
       background: #14161B;
       color: #FFFFFF;
-      box-shadow: 0 4px 16px rgba(20, 22, 27, 0.15);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 4px rgba(20, 22, 27, 0.08), 0 6px 18px -2px rgba(20, 22, 27, 0.18);
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 150ms ease;
+      will-change: transform;
     }
     .btn-dark-pill:hover {
       background: #000000;
-      box-shadow: 0 6px 20px rgba(20, 22, 27, 0.22);
+      box-shadow: 0 4px 8px rgba(20, 22, 27, 0.12), 0 8px 22px -2px rgba(20, 22, 27, 0.24);
       transform: translateY(-1px);
     }
     .btn-dark-pill:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
+      transition-duration: 90ms;
     }
 
+    /* Concentric Avatar Ring */
     .avatar-bevel-ring {
       background: linear-gradient(135deg, #E6E1D8 0%, #CAC3B6 100%);
       padding: 5px;
       box-shadow: 0 10px 25px -5px rgba(20, 22, 27, 0.12), inset 0 2px 4px rgba(255, 255, 255, 0.8);
     }
 
-    /* Scrollbar */
+    /* Accessible Focus Ring */
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid #14161B;
+      outline-offset: 2px;
+    }
+
+    /* Smooth Dialog Modal (Never animate from scale(0)) */
+    #qrModal {
+      transition: opacity 200ms var(--ease-out), visibility 200ms var(--ease-out);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #qrModal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    #qrModal .modal-card {
+      transform: scale(0.95);
+      opacity: 0;
+      transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out);
+    }
+    #qrModal.active .modal-card {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* Slide-in Navigation Drawer (iOS Sheet Deceleration) */
+    #navDrawer {
+      transition: opacity 220ms var(--ease-out), visibility 220ms var(--ease-out);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #navDrawer.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    #navDrawer .drawer-panel {
+      transform: translateX(100%);
+      transition: transform 260ms var(--ease-drawer);
+    }
+    #navDrawer.active .drawer-panel {
+      transform: translateX(0);
+    }
+
+    /* Non-jarring Floating Toast */
+    #toast {
+      transform: translate(-50%, 16px) scale(0.96);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out), visibility 220ms var(--ease-out);
+    }
+    #toast.active {
+      transform: translate(-50%, 0) scale(1);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* Prefers Reduced Motion Respect */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 5px;
     }
@@ -228,9 +318,9 @@
       </a>
 
       <!-- Scroll Down Indicator -->
-      <a href="#services" class="inline-flex flex-col items-center text-slate-500 hover:text-dark transition-colors pt-1 group">
-        <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce text-slate-600 mb-0.5"></i>
-        <span class="text-[11px] font-medium text-slate-500">Scroll down</span>
+      <a href="#services" class="inline-flex flex-col items-center text-slate-400 hover:text-dark transition-colors pt-1 group focus-visible:ring-2 focus-visible:ring-dark rounded-lg p-1">
+        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500 mb-0.5 group-hover:translate-y-0.5 transition-transform"></i>
+        <span class="text-[11px] font-medium text-slate-500 group-hover:text-dark transition-colors">Explore Services</span>
       </a>
 
     </section>
@@ -430,21 +520,21 @@
   <!-- ========================================== -->
   <!-- MODAL: QR CODE FOR INSTANT SCAN            -->
   <!-- ========================================== -->
-  <div id="qrModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4" onclick="closeQrModal(event)">
-    <div class="bg-white rounded-3xl p-6 max-w-xs w-full text-center space-y-4 shadow-2xl border border-black/5" onclick="event.stopPropagation()">
+  <div id="qrModal" role="dialog" aria-modal="true" aria-label="QR Code Contact Scanner" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onclick="closeQrModal(event)">
+    <div class="modal-card bg-white rounded-3xl p-6 max-w-xs w-full text-center space-y-4 shadow-2xl border border-black/5" onclick="event.stopPropagation()">
       <div class="flex justify-between items-center">
         <div class="text-left">
           <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">In-Person Scan</span>
           <h3 class="text-sm font-bold text-dark">Scan to Open Contact</h3>
         </div>
-        <button onclick="closeQrModal()" class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-dark transition-colors">
+        <button onclick="closeQrModal()" aria-label="Close QR modal" class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-dark transition-colors active:scale-95">
           <i data-lucide="x" class="w-3.5 h-3.5 stroke-[2]"></i>
         </button>
       </div>
 
-      <!-- QR Container -->
+      <!-- QR Container with Concentric Radius -->
       <div class="p-3 bg-white rounded-2xl shadow-inner inline-block mx-auto border border-black/[0.06]">
-        <div id="qrcode"></div>
+        <div id="qrcode" class="flex items-center justify-center"></div>
       </div>
 
       <p class="text-xs text-slate-500 leading-snug">
@@ -452,11 +542,11 @@
       </p>
 
       <div class="grid grid-cols-2 gap-2 pt-1">
-        <button onclick="copyCurrentUrl()" class="py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-dark transition-colors flex items-center justify-center gap-1.5">
+        <button onclick="copyCurrentUrl()" class="py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-dark transition-transform active:scale-95 flex items-center justify-center gap-1.5">
           <i data-lucide="copy" class="w-3.5 h-3.5"></i>
           <span>Copy Link</span>
         </button>
-        <button onclick="closeQrModal()" class="py-2.5 px-3 rounded-xl btn-dark-pill text-xs font-semibold text-white transition-colors">
+        <button onclick="closeQrModal()" class="py-2.5 px-3 rounded-xl btn-dark-pill text-xs font-semibold text-white">
           Close
         </button>
       </div>
@@ -465,10 +555,10 @@
 
 
   <!-- ========================================== -->
-  <!-- SLIDE-IN NAVIGATION DRAWER                 -->
+  <!-- SLIDE-IN NAVIGATION DRAWER (iOS Deceleration) -->
   <!-- ========================================== -->
-  <div id="navDrawer" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden transition-opacity" onclick="toggleNavDrawer()">
-    <div class="fixed top-0 right-0 bottom-0 w-72 bg-[#F5F3EF] border-l border-black/[0.08] p-6 flex flex-col justify-between shadow-2xl" onclick="event.stopPropagation()">
+  <div id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation Drawer" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50" onclick="closeNavDrawer()">
+    <div class="drawer-panel fixed top-0 right-0 bottom-0 w-72 bg-[#F5F3EF] border-l border-black/[0.08] p-6 flex flex-col justify-between shadow-2xl" onclick="event.stopPropagation()">
       
       <div>
         <div class="flex items-center justify-between pb-6 border-b border-black/[0.06]">
@@ -481,25 +571,25 @@
               <span class="text-[10px] text-slate-500 font-medium uppercase tracking-wider block">TapAndGo Card</span>
             </div>
           </div>
-          <button onclick="toggleNavDrawer()" class="p-1.5 rounded-full text-slate-500 hover:text-dark">
+          <button onclick="closeNavDrawer()" aria-label="Close navigation menu" class="p-1.5 rounded-full text-slate-500 hover:text-dark active:scale-95 transition-transform">
             <i data-lucide="x" class="w-4 h-4 stroke-[2]"></i>
           </button>
         </div>
 
         <nav class="space-y-1.5 mt-6">
-          <a href="#hero" onclick="toggleNavDrawer()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors">
+          <a href="#hero" onclick="closeNavDrawer()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors active:scale-98">
             <i data-lucide="user" class="w-4 h-4 text-slate-600"></i>
             <span>Profile Card</span>
           </a>
-          <a href="#services" onclick="toggleNavDrawer()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors">
+          <a href="#services" onclick="closeNavDrawer()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors active:scale-98">
             <i data-lucide="sparkles" class="w-4 h-4 text-slate-600"></i>
             <span>What We Provide</span>
           </a>
-          <a href="#connect" onclick="toggleNavDrawer()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors">
+          <a href="#connect" onclick="closeNavDrawer()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors active:scale-98">
             <i data-lucide="share-2" class="w-4 h-4 text-slate-600"></i>
             <span>Connect Channels</span>
           </a>
-          <a href="https://www.appearoph.online/" target="_blank" class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors group">
+          <a href="https://www.appearoph.online/" target="_blank" class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white text-dark text-xs font-semibold transition-colors group active:scale-98">
             <div class="flex items-center gap-3">
               <i data-lucide="globe" class="w-4 h-4 text-emerald-600"></i>
               <span>Appearo Platform</span>
@@ -514,7 +604,7 @@
           <i data-lucide="download" class="w-3.5 h-3.5"></i>
           <span>Save Contact (.vcf)</span>
         </button>
-        <button onclick="openQrModal(); toggleNavDrawer();" class="w-full py-2.5 px-4 rounded-xl bg-white border border-black/[0.06] text-xs font-bold text-dark hover:bg-slate-50 flex items-center justify-center gap-2">
+        <button onclick="openQrModal(); closeNavDrawer();" class="w-full py-2.5 px-4 rounded-xl bg-white border border-black/[0.06] text-xs font-bold text-dark hover:bg-slate-50 flex items-center justify-center gap-2 active:scale-98 transition-transform">
           <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>
           <span>Show QR Code</span>
         </button>
@@ -525,7 +615,7 @@
 
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2.5 rounded-full bg-dark text-white text-xs font-medium shadow-2xl z-50 hidden items-center gap-2 transition-all">
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 px-4 py-2.5 rounded-full bg-dark text-white text-xs font-medium shadow-2xl z-50 flex items-center gap-2">
     <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
     <span id="toastMsg">Action completed</span>
   </div>
@@ -612,12 +702,11 @@
       });
     }
 
-    // QR Code Handling
+    // QR Code Handling with Smooth Modal Transition
     let qrGenerated = false;
     function openQrModal() {
       const modal = document.getElementById('qrModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      modal.classList.add('active');
       if (!qrGenerated) {
         new QRCode(document.getElementById("qrcode"), {
           text: window.location.href,
@@ -633,26 +722,45 @@
 
     function closeQrModal() {
       const modal = document.getElementById('qrModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+      modal.classList.remove('active');
     }
 
+    // Slide Drawer Functions
     function toggleNavDrawer() {
       const drawer = document.getElementById("navDrawer");
-      drawer.classList.toggle("hidden");
+      drawer.classList.toggle("active");
     }
 
+    function openNavDrawer() {
+      const drawer = document.getElementById("navDrawer");
+      drawer.classList.add("active");
+    }
+
+    function closeNavDrawer() {
+      const drawer = document.getElementById("navDrawer");
+      drawer.classList.remove("active");
+    }
+
+    // Global Keyboard Listeners (Escape to dismiss)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeQrModal();
+        closeNavDrawer();
+      }
+    });
+
+    // Tactile Toast Handler
+    let toastTimer;
     function showToast(message) {
       const toast = document.getElementById("toast");
       const toastMsg = document.getElementById("toastMsg");
       toastMsg.textContent = message;
-      toast.classList.remove("hidden");
-      toast.classList.add("flex");
+      toast.classList.add("active");
 
-      setTimeout(() => {
-        toast.classList.add("hidden");
-        toast.classList.remove("flex");
-      }, 3000);
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("active");
+      }, 2600);
     }
   </script>
 </body>
